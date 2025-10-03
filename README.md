@@ -27,43 +27,48 @@ Add: netproto and pthread
 7. 	Choose the file and verify the Go-Back-N protocol operation.
 
 💻 Program
-
+```
 #include <stdio.h>
 
-void main() {
-    
+int main() {
     int i, j, n;
     printf("GO BACK N ARQ\n");
     printf("Enter number of frames: ");
     scanf("%d", &n);
 
-    char frame[n][10];
+    char frame[n][10];  // each frame content (max length 9 chars)
 
-    for (i = 1; i <= n; i++) {
-        printf("Content for frame %d: ", i);
+    for (i = 0; i < n; i++) {
+        printf("Content for frame %d: ", i + 1);
         scanf("%s", frame[i]);
     }
 
     printf("Enter frame number with no ACK: ");
     scanf("%d", &j);
 
-    for (i = 1; i <= n; i++) {
-        if (i != j)
-            printf("\nSending frame %d\nFRAME ACKNOWLEDGED...\n", i);
+    for (i = 0; i < n; i++) {
+        if (i + 1 != j) {
+            printf("\nSending frame %d\nFRAME ACKNOWLEDGED...\n", i + 1);
+        }
     }
 
-    if (j <= n) {
+    if (j >= 1 && j <= n) {
         printf("No Acknowledgement for frame %d...\n", j);
-        printf("Resending... Content from frame %d: %s\n\n", j, frame[j]);
+        printf("Resending... Content from frame %d: %s\n\n", j, frame[j - 1]);
+        printf("\nSending frame %d\nFRAME ACKNOWLEDGED...\n", j);
     }
 
-    printf("\nSending frame %d\nFRAME ACKNOWLEDGED...\n", j);
     printf("\n\nALL FRAMES RECEIVED SUCCESSFULLY\n\n");
+    return 0;
 }
+```
 
-🖥️ Sample Output
-<img width="1236" height="1108" alt="code block 2" src="https://github.com/user-attachments/assets/49621d52-6eda-4d7e-85e0-49a6ad75a1d6" />
+ 
+Output
+
+<img width="1917" height="1075" alt="image" src="https://github.com/user-attachments/assets/2da064b4-547f-4a65-ab03-3de4e1ae07ff" />
 
 ✅ Result
+Thus Go-Back-N protocol using the Selective Repeat technique was verified successfully.
 
 Thus, the Go-Back-N protocol using Selective Repeat was successfully implemented and verified.
