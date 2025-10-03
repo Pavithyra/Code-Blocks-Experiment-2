@@ -69,6 +69,5 @@ Output
 <img width="1917" height="1075" alt="image" src="https://github.com/user-attachments/assets/2da064b4-547f-4a65-ab03-3de4e1ae07ff" />
 
 ✅ Result
-Thus Go-Back-N protocol using the Selective Repeat technique was verified successfully.
 
 Thus, the Go-Back-N protocol using Selective Repeat was successfully implemented and verified.
